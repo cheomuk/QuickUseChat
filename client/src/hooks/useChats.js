@@ -19,8 +19,8 @@ export const useChats = () => {
 
   useEffect(() => {
 
-    socket.on('send', (id, type, sender, data, time) => {
-      setChats((value) => value.concat({id, type, sender, message: data, date: getDatetime(time)}));
+    socket.on('send', (id, sender, type, data, time) => {
+      setChats((value) => value.concat({id, sender, type, message: data, date: getDatetime(time)}));
     });
 
     socket.on('remove', (id) => {
@@ -40,5 +40,9 @@ export const useChats = () => {
     socket.emit("joinRoom", num, name)
   };
 
-  return { chats, error, send, remove, joinRoom, setNumber };
+  const leaveRoom = (num, name) => {
+    socket.emit("leaveRoom", num, name)
+  };
+
+  return { chats, error, send, remove, joinRoom, leaveRoom, setNumber };
 };
