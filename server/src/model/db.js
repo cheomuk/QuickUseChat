@@ -2,7 +2,7 @@
 var Sequelize = require('sequelize');
 var sequelize;
 
-sequelize = new Sequelize('chatbot', 'root', 'cheomuk201720^^', {
+sequelize = new Sequelize('', '', '', {
   host: 'localhost',
   port: 3306,
   dialect: 'mysql', // 데이터베이스 종류는?
